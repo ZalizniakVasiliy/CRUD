@@ -37,14 +37,11 @@ export const postsApi = createApi({
         }),
 
         updatePost: build.mutation({
-            query: data => {
-                const {id, ...postsData} = data;
-                return {
-                    url: `posts/${id}`,
-                    method: 'PUT',
-                    body: {...postsData}
-                }
-            },
+            query: ({id, ...postsData}) => ({
+                url: `posts/${id}`,
+                method: 'PUT',
+                body: postsData
+            }),
             invalidatesTags: [{type: 'Posts', id: 'List'}],
         }),
 
