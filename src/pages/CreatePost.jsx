@@ -5,6 +5,11 @@ import RoutesToPages from "../utils/RoutesToPages";
 import {useCreatePostMutation} from "../store/postsApi";
 import {useState} from "react";
 
+const formDefaultData = {
+    title: '',
+    body: ''
+};
+
 const {StringType} = Schema.Types;
 const model = Schema.Model({
     title: StringType().isRequired('This field is required.'),
@@ -21,17 +26,12 @@ const TextField = props => {
     );
 };
 
-const formDefaultData = {
-    title: '',
-    body: ''
-};
-
 const CreatePost = () => {
     const navigate = useNavigate();
     const [createPost, {isLoading: isCreating}] = useCreatePostMutation();
     const [postData, setPostData] = useState({...formDefaultData});
 
-    if (isCreating) return <h3>Loading...</h3>;
+    if (isCreating) return <h3>Creating...</h3>;
 
     const goToMainPage = () => {
         navigate(RoutesToPages.mainPage);
@@ -44,7 +44,7 @@ const CreatePost = () => {
     };
 
     const createPostHandler = async () => {
-        const requestData = await createPost({...postData}).unwrap();
+        await createPost({...postData}).unwrap();
         setPostData({...formDefaultData});
     };
 

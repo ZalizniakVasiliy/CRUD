@@ -16,7 +16,8 @@ export const postsApi = createApi({
                 return result
                     ? [...result.map(({id}) => ({type: 'Posts', id})),
                         {type: 'Posts', id: 'List'}]
-                    : [{type: 'Posts', id: 'List'}]
+                    :
+                    [{type: 'Posts', id: 'List'}]
             },
         }),
 

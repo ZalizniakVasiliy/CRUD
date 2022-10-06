@@ -32,36 +32,35 @@ const UpdatePost = props => {
     };
 
     return (
-        <>
-            <Drawer open={props.open} onClose={props.toggleVisibilityForm}>
-                <Drawer.Body>
-                    <Form model={model}
-                          onSubmit={handleSubmit}
-                          style={{
-                              border: '1px solid lightgrey',
-                              padding: '15px',
-                              borderRadius: '6px'
-                          }}>
-                        <TextField name="title"
-                                   value={postData.title}
-                                   placeholder='... title'
-                                   label="Title"
-                                   onInput={updatePostData}/>
-                        <TextField name="body"
-                                   value={postData.body}
-                                   placeholder='... body'
-                                   label="Body"
-                                   onInput={updatePostData}/>
-                        <Button appearance="primary"
-                                type="submit"
-                                color='green'
-                                onClick={props.toggleVisibilityForm}>
-                            Submit
-                        </Button>
-                    </Form>
-                </Drawer.Body>
-            </Drawer>
-        </>
+        <Drawer open={props.open} onClose={props.toggleVisibilityForm}>
+            <Drawer.Body>
+                <Form
+                    model={model}
+                    onSubmit={handleSubmit}
+                    style={{
+                        border: '1px solid lightgrey',
+                        padding: '15px',
+                        borderRadius: '6px'
+                    }}>
+                    <TextField name="title"
+                               value={postData.title}
+                               placeholder='... title'
+                               label="Title"
+                               onInput={updatePostData}/>
+                    <TextField name="body"
+                               value={postData.body}
+                               placeholder='... body'
+                               label="Body"
+                               onInput={updatePostData}/>
+                    <Button appearance="primary"
+                            type="submit"
+                            color='green'
+                            onClick={props.toggleVisibilityForm}>
+                        Submit
+                    </Button>
+                </Form>
+            </Drawer.Body>
+        </Drawer>
     );
 };
 
@@ -69,13 +68,6 @@ const UpdatePost = props => {
   Don't know, why! I couldn't find a solution despite on compilance
   with the rules of the call 'propTypes' after a component.
   That's why I commented out these fragments of code*/
-
-// UpdatePost.propTypes = {
-//     data: PropTypes.shape({
-//         title: PropTypes.string.isRequired,
-//         body: PropTypes.string.isRequired
-//     })
-// };
 
 // UpdatePost.propTypes = {
 //     title: PropTypes.string.isRequired,

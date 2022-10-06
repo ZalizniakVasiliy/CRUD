@@ -26,13 +26,14 @@ const MainPage = () => {
                     style={{margin: '10px 0'}}
                     onClick={handleCreatePost}>Create Post
             </Button>
-            <List bordered hover>
+            <List bordered hover
+                  style={{margin: '0 0 10px 0'}}>
                 {data.map(post => (
                     <List.Item key={post.id}>
                         {post.title}
                         <Button appearance='primary'
                                 color='green'
-                                style={{marginLeft: '5px'}}
+                                style={{marginLeft: '10px'}}
                                 onClick={getWholePost(post.id)}>Read more
                         </Button>
                     </List.Item>
