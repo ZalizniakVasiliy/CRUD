@@ -22,7 +22,7 @@ const WholePost = () => {
     const [deletePost] = useDeletePostMutation();
     const [updatePost] = useUpdatePostMutation(id);
     const {data, isLoading} = useGetPostsByIdQuery(id);
-    const {data: comments} = useGetCommentsQuery(id);
+    const {data: comments = []} = useGetCommentsQuery(id);
     const [open, setOpen] = useState(false);
 
     if (isLoading) return <h3>Loading...</h3>;
@@ -58,15 +58,15 @@ const WholePost = () => {
             <Container>
                 <Sidebar>
                     <List bordered>
-                        {(comments.length > 0) ? comments.map(comment => (
+                        {comments.length > 0
+                            &&
+                            comments.map(comment => (
                                 <List.Item key={comment.id}>
                                     <p style={{fontStyle: 'italic'}}>{comment.name}</p>
                                     <p style={{fontWeight: 'bold'}}>{comment.email}</p>
                                     <p>{comment.body}</p>
                                 </List.Item>
-                            ))
-                            :
-                            <h2>'Nothing to show'</h2>}
+                            ))}
                     </List>
                 </Sidebar>
                 <Container style={{marginLeft: '15px',}}>

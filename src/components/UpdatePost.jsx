@@ -70,6 +70,13 @@ const UpdatePost = props => {
   That's why I commented out these fragments of code*/
 
 // UpdatePost.propTypes = {
+//     props: PropTypes.shape({
+//         title: PropTypes.string.isRequired,
+//         body: PropTypes.string.isRequired
+//     })
+// };
+
+// UpdatePost.propTypes = {
 //     title: PropTypes.string.isRequired,
 //     body: PropTypes.string.isRequired
 // };
